@@ -4,7 +4,9 @@
     <meta charset="utf-8">
 
     <title>Number guessing game</title>
-
+	  
+<!-- Sam Noble, 4/18/24, MCC, Java, Exercise 19 -- Troubleshooting Guess the Number Game-->
+	  
     <style>
       html {
         font-family: sans-serif;
@@ -42,11 +44,11 @@
 </body>
 
 <script>
-  let randomNumber = Math.floor(Math.random()) + 1;
+  let randomNumber = Math.floor(Math.random() * 100) + 1; // Fixed logic error: Generating random number between 1 and 100 inclusive.
 
   const guesses = document.querySelector('.guesses');
   const lastResult = document.querySelector('.lastResult');
-  const lowOrHi = document.querySelector('lowOrHi');
+  const lowOrHi = document.querySelector('.lowOrHi'); // Fixed syntax error: Added missing dot to select class.
   const guessSubmit = document.querySelector('.guessSubmit');
   const guessField = document.querySelector('.guessField');
 
@@ -83,34 +85,35 @@
     guessField.value = '';
     guessField.focus();
   }
-  guessSubmit.addeventListener('click', checkGuess);
+  guessSubmit.addEventListener('click', checkGuess); // Fixed syntax error: Changed "addeventListener" to "addEventListener".
 
   function setGameOver() {
-	  guessField.disabled = true;
-	  guessSubmit.disabled = true;
-	  resetButton = document.createElement('button');
-	  resetButton.textContent = 'Start new game';
-	  document.body.appendChild(resetButton);
-	  resetButton.addeventListener('click', resetGame);
+    guessField.disabled = true;
+    guessSubmit.disabled = true;
+    resetButton = document.createElement('button');
+    resetButton.textContent = 'Start new game';
+    document.body.appendChild(resetButton);
+    resetButton.addEventListener('click', resetGame); // Fixed syntax error: Changed "addeventListener" to "addEventListener".
   }
 
   function resetGame() {
-	  guessCount = 1;
+    guessCount = 1;
 
     const resetParas = document.querySelectorAll('.resultParas p');
     for (const resetPara of resetParas) {
       resetPara.textContent = '';
     }
-	  resetButton.parentNode.removeChild(resetButton);
+    resetButton.parentNode.removeChild(resetButton);
 
-	  guessField.disabled = false;
-	  guessSubmit.disabled = false;
-	  guessField.value = '';
-	  guessField.focus();
+    guessField.disabled = false;
+    guessSubmit.disabled = false;
+    guessField.value = '';
+    guessField.focus();
 
-	  lastResult.style.backgroundColor = 'white';
+    lastResult.style.backgroundColor = 'white';
 
-	  randomNumber = Math.floor(Math.random()) + 1;
+    randomNumber = Math.floor(Math.random() * 100) + 1; // Fixed logic error: Generating random number between 1 and 100 inclusive.
   }
+
 </script>
 </html>
