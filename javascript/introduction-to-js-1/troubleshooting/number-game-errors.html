@@ -4,7 +4,13 @@
     <meta charset="utf-8">
 
     <title>Number guessing game</title>
-
+	  
+<!-- 	  Sam Noble, 
+	  4/18/24, 
+	  Mesa, 
+	  class, 
+	  Exercise 19 Troubleshooting Guess the Number Game
+-->
     <style>
       html {
         font-family: sans-serif;
@@ -42,7 +48,8 @@
 </body>
 
 <script>
-  let randomNumber = Math.floor(Math.random()) + 1;
+  let randomNumber = Math.floor(Math.random() * 100) + 1; // Fixed logic error: Generating random number between 1 and 100 
+
 
   const guesses = document.querySelector('.guesses');
   const lastResult = document.querySelector('.lastResult');
